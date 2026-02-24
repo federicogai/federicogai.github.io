@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federico Gai — Media Strategist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F5F0E8; --dark: #1A1814; --warm-mid: #6B5E4E; --accent: #C8A96E; --accent-light: #E8D9BC; --text-body: #3A3530; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--cream); color: var(--text-body); font-weight: 300; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; background: rgba(245,240,232,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(200,169,110,0.2); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark); letter-spacing: 0.03em; text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--warm-mid); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; background: var(--cream); }
+    .hero::before { content: 'FG'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: 28vw; font-weight: 300; color: rgba(200,169,110,0.08); line-height: 1; pointer-events: none; user-select: none; }
+    .hero-inner { max-width: 820px; animation: fadeUp 1s ease both; }
+    .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; font-weight: 400; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--dark); margin-bottom: 0.3rem; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-aka { font-size: 0.9rem; color: var(--warm-mid); margin-bottom: 2rem; font-weight: 300; }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-style: italic; font-weight: 300; color: var(--warm-mid); margin-bottom: 1.5rem; max-width: 640px; line-height: 1.4; }
+    .hero-sub { font-size: 1rem; color: var(--text-body); max-width: 540px; margin-bottom: 3rem; line-height: 1.8; }
+    .hero-cta { display: inline-block; padding: 0.9rem 2.4rem; background: var(--dark); color: var(--cream); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 400; transition: background 0.2s, transform 0.2s; }
+    .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
+    section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; background: var(--cream); }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); font-weight: 400; margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--dark); margin-bottom: 2.5rem; line-height: 1.2; }
+    #about { border-top: 1px solid var(--accent-light); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.9; }
+    .journey { display: flex; flex-direction: column; }
+    .journey-item { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1.2rem 0; border-bottom: 1px solid var(--accent-light); }
+    .journey-item:last-child { border-bottom: none; }
+    .journey-year { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--accent); font-weight: 600; min-width: 70px; padding-top: 0.1rem; }
+    .journey-detail strong { display: block; font-size: 0.95rem; font-weight: 500; color: var(--dark); margin-bottom: 0.2rem; }
+    .journey-detail span { font-size: 0.88rem; color: var(--warm-mid); }
+    .philosophy-box { background: var(--dark); color: var(--cream); padding: 3rem 3.5rem; margin-top: 4rem; position: relative; }
+    .philosophy-box::before { content: 'triangle'; font-size: 0; position: absolute; top: 2rem; right: 2.5rem; width: 0; height: 0; border-left: 25px solid transparent; border-right: 25px solid transparent; border-bottom: 43px solid rgba(200,169,110,0.3); }
+    .philosophy-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--accent); margin-bottom: 1rem; }
+    .philosophy-box p { font-size: 0.95rem; line-height: 1.9; opacity: 0.85; }
+    .triangle-pillars { display: flex; gap: 2rem; margin-top: 1.5rem; }
+    .pillar { text-align: center; flex: 1; }
+    .pillar-icon { font-size: 1.4rem; color: var(--accent); margin-bottom: 0.4rem; }
+    .pillar-label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+    #skills { border-top: 1px solid var(--accent-light); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .skill-card { padding: 2rem; border: 1px solid var(--accent-light); transition: border-color 0.2s, transform 0.2s; }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .skill-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--dark); margin-bottom: 0.8rem; }
+    .skill-card p { font-size: 0.88rem; color: var(--warm-mid); line-height: 1.7; }
+    .skill-icon { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
+    .services-wrapper { background: var(--dark); width: 100%; }
+    .services-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 4rem; }
+    .services-inner .section-title { color: var(--cream); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 3rem; }
+    .service-card { background: rgba(255,255,255,0.04); padding: 2.5rem 2rem; border: 1px solid rgba(200,169,110,0.15); transition: background 0.2s; }
+    .service-card:hover { background: rgba(200,169,110,0.08); }
+    .service-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--accent); opacity: 0.4; line-height: 1; margin-bottom: 1rem; }
+    .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--cream); margin-bottom: 1rem; }
+    .service-card p { font-size: 0.88rem; line-height: 1.8; color: rgba(245,240,232,0.65); }
+    #tools { border-top: 1px solid var(--accent-light); }
+    .tools-intro { max-width: 580px; margin-bottom: 3rem; font-size: 1rem; line-height: 1.9; color: var(--warm-mid); }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .tool-card { padding: 2rem; border: 1px dashed var(--accent-light); text-align: center; color: var(--warm-mid); }
+    .tool-placeholder { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; opacity: 0.6; }
+    .tool-coming { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-top: 0.5rem; opacity: 0.7; }
+    .tool-card-live { padding: 2rem; border: 1px solid var(--accent-light); background: rgba(200,169,110,0.06); transition: box-shadow 0.2s ease, transform 0.2s ease; text-decoration: none; display: block; color: inherit; }
+    .tool-card-live:hover { box-shadow: 0 6px 24px rgba(37,21,8,0.1); transform: translateY(-2px); }
+    .tool-emoji { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .tool-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
+    .tool-desc { font-size: 0.85rem; line-height: 1.6; color: var(--warm-mid); margin-bottom: 1rem; }
+    .tool-live-badge { display: inline-block; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2C5F2E; background: rgba(44,95,46,0.1); padding: 3px 10px; border-radius: 2px; font-weight: 500; }
+    #contact { border-top: 1px solid var(--accent-light); text-align: center; }
+    .contact-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-style: italic; font-weight: 300; color: var(--warm-mid); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+    .contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .contact-link { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; border: 1px solid var(--dark); text-decoration: none; color: var(--dark); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; transition: all 0.2s; }
+    .contact-link:hover { background: var(--dark); color: var(--cream); }
+    .contact-link.accent { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+    .contact-link.accent:hover { background: var(--accent); border-color: var(--accent); }
+    footer { text-align: center; padding: 2.5rem 4rem; border-top: 1px solid var(--accent-light); font-size: 0.8rem; color: var(--warm-mid); letter-spacing: 0.05em; }
+    footer em { font-style: italic; font-family: 'Cormorant Garamond', serif; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.7rem; letter-spacing: 0.08em; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero h1 { font-size: 2rem; }
+      section { padding: 4rem 1.5rem; }
+      .services-inner { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .triangle-pillars { flex-direction: column; gap: 1rem; }
+      .philosophy-box { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Federico Gai</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Media Strategist · Stuttgart, Germany</p>
+      <h1>Federico <em>Gai</em></h1>
+      <p class="hero-aka">known as Fede</p>
+      <p class="hero-tagline">"The Italian who learned to think German."</p>
+      <p class="hero-sub">15+ years bridging Italian and German markets — helping brands spend smarter and teams work better.</p>
+      <a href="#contact" class="hero-cta">Let's talk</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <p class="section-label">About me</p>
+    <h2 class="section-title">Two countries,<br>one perspective.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>In 2014 I moved from Italy to Germany — following my German wife, a new life, and a challenge I hadn't fully anticipated: starting over in a language I didn't speak, in an industry I had to reconquer from scratch.</p>
+        <p>I did. And in doing so, I became something rare in this industry: a media professional who genuinely understands both sides — the Italian warmth and creativity, the German precision and trust. Not as a stereotype, but as a lived experience.</p>
+        <p>Today I work as a senior leader helping brands navigate their media investment across markets, leading teams and managing client relationships with what I call a simple but non-negotiable philosophy: the Happiness Triangle.</p>
+        <p>I speak Italian, German and English fluently — and a bit of French when needed.</p>
+      </div>
+      <div>
+        <div class="journey">
+          <div class="journey-item">
+            <span class="journey-year">Turin</span>
+            <div class="journey-detail"><strong>Where it started</strong><span>First steps in media & advertising</span></div>
+          </div>
+          <div class="journey-item">
+            <span class="journey-year">Milan</span>
+            <div class="journey-detail"><strong>GroupM & the big leagues</strong><span>Growing into a national media role</span></div>
+          </div>
+          <div class="journey-item">
+            <span class="journey-year">Düsseldorf</span>
+            <div class="journey-detail"><strong>Germany, chapter one</strong><span>Learning the language, earning the trust</span></div>
+          </div>
+          <div class="journey-item">
+            <span class="journey-year">Stuttgart</span>
+            <div class="journey-detail"><strong>Today</strong><span>Senior media leadership, two markets</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="philosophy-box">
+      <h3>The Happiness Triangle</h3>
+      <p>My guiding philosophy, developed over 15 years of client work. Any engagement only works long-term if three things are in balance simultaneously.</p>
+      <div class="triangle-pillars">
+        <div class="pillar"><div class="pillar-icon">◆</div><div class="pillar-label">Happy Client</div></div>
+        <div class="pillar"><div class="pillar-icon">◆</div><div class="pillar-label">Happy Team</div></div>
+        <div class="pillar"><div class="pillar-icon">◆</div><div class="pillar-label">Happy Finance</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">What I bring<br>to the table.</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">◎</div><h3>Media Strategy</h3><p>Full-funnel media planning and strategy across Italian and German markets. From audience definition to channel mix, budget allocation and performance reporting.</p></div>
+      <div class="skill-card"><div class="skill-icon">◎</div><h3>Client Leadership</h3><p>Building lasting client relationships built on trust, transparency and results. Turning difficult situations into loyal partnerships — my clients don't just stay, they refer.</p></div>
+      <div class="skill-card"><div class="skill-icon">◎</div><h3>Team Management</h3><p>Leading multi-disciplinary media teams with a human-first approach. Creating environments where people do their best work and clients feel the difference.</p></div>
+      <div class="skill-card"><div class="skill-icon">◎</div><h3>Italian–German Bridge</h3><p>Rare fluency in both markets — culturally, linguistically, professionally. Helping companies expand across borders without losing what makes them work.</p></div>
+      <div class="skill-card"><div class="skill-icon">◎</div><h3>Multilingual</h3><p>Italian (native) · German (fluent) · English (fluent) · French (conversational). Communicating with nuance across cultures is itself a strategic advantage.</p></div>
+      <div class="skill-card"><div class="skill-icon">◎</div><h3>AI-Assisted Tools</h3><p>Building practical tools with Claude to solve real problems — from client reporting to workflow automation. A growing capability, applied with intention.</p></div>
+    </div>
+  </section>
+
+  <div class="services-wrapper">
+    <div class="services-inner" id="services">
+      <p class="section-label" style="color: var(--accent)">Services</p>
+      <h2 class="section-title">How I can help.</h2>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-num">01</div><h3>Media Strategy Consulting</h3><p>For brands that want to sharpen their media investment in Germany or Italy. I help define the right strategy, challenge the status quo, and translate complexity into clear decisions.</p></div>
+        <div class="service-card"><div class="service-num">02</div><h3>Italy–Germany Bridge Advisory</h3><p>For companies expanding across borders. Whether you're Italian entering Germany or German entering Italy, I help you navigate the cultural, commercial and media landscape with confidence.</p></div>
+        <div class="service-card"><div class="service-num">03</div><h3>AI Tools & Workflow</h3><p>Practical, no-nonsense tools built with Claude to solve specific problems. From smarter reporting to client-facing dashboards — small tools that make a real difference.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="tools">
+    <p class="section-label">Built with Claude</p>
+    <h2 class="section-title">My tools.</h2>
+    <p class="tools-intro">I'm learning to build practical AI-powered tools with Claude — one project at a time. Each tool solves a real problem I've encountered in my work. This section grows as I build.</p>
+    <div class="tools-grid">
+      <div class="tool-card" style="text-align:left;">
+        <span class="tool-emoji" style="display:block; font-size:2rem; margin-bottom:0.75rem;">☕</span>
+        <div class="tool-name" style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; color:var(--dark); margin-bottom:0.5rem;">Coffee with Fede</div>
+        <p class="tool-desc" style="font-size:0.85rem; line-height:1.6; color:var(--warm-mid); margin-bottom:1rem;">Daily LinkedIn post generator + weekly media intelligence brief. Scans Italian and German media sources, writes 3 post options per day in my voice.</p>
+        <span class="tool-coming">Personal use · Built with Claude</span>
+      </div>
+      <div class="tool-card"><p class="tool-placeholder">More coming</p><p class="tool-coming">In progress</p></div>
+      <div class="tool-card"><p class="tool-placeholder">Watch this space</p><p class="tool-coming">In progress</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title">Let's talk.</h2>
+    <p class="contact-tagline">Whether you're looking for a senior media partner, a bridge between two markets, or just a good conversation — I'm easy to reach.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/federicogai/" target="_blank" class="contact-link accent">LinkedIn</a>
+      <a href="/cdn-cgi/l/email-protection#197f7c7d7c6b707a767e78702128597e74787075377a7674" class="contact-link">Email me</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Federico Gai · <em>Built with
